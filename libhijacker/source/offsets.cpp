@@ -41,6 +41,17 @@ static constexpr uint32_t V502 = 0x5020000;
 static constexpr uint32_t V510 = 0x5100000;
 static constexpr uint32_t V550 = 0x5500000;
 
+static constexpr uint32_t V600 = 0x6000000;
+static constexpr uint32_t V602 = 0x6020000;
+static constexpr uint32_t V650 = 0x6500000;
+
+static constexpr uint32_t V700 = 0x7000000;
+static constexpr uint32_t V701 = 0x7010000;
+static constexpr uint32_t V720 = 0x7200000;
+static constexpr uint32_t V740 = 0x7400000;
+static constexpr uint32_t V760 = 0x7600000;
+static constexpr uint32_t V761 = 0x7610000;
+
 static uint32_t getSystemSwVersion() {
 	static uint32_t version;
 	if (version != 0) [[likely]] {
@@ -100,7 +111,21 @@ size_t allproc() {
 		case V502:
 		case V510:
 		case V550:
-			allprocOffset = 0x0355DD00;
+			allprocOffset = 0x355DD00;
+			break;
+		case V600:
+		case V602:
+		case V650:
+			allprocOffset = 0x34C9D20;
+			break;
+		
+		case V700:
+		case V701:
+		case V720:
+		case V740:
+		case V760:
+		case V761:
+			allprocOffset = 0x34A9D50;
 			break;
 		default:
 			allprocOffset = -1;
@@ -139,6 +164,7 @@ size_t security_flags() {
 		
 		case V400:
 			return 0x6506474;
+		
 		case V402:
 		case V403:
 		case V450:
@@ -149,7 +175,20 @@ size_t security_flags() {
 		case V502:
 		case V510:
 		case V550:
-			return 0x072866EC;
+			return 0x72866EC;
+		
+		case V600:
+		case V602:
+		case V650:
+			return 0x71F68EC;
+		
+		case V700:
+		case V701:
+		case V720:
+		case V740:
+		case V760:
+		case V761:
+			return 0x1718064;
 		default:
 			return -1;
 	}
@@ -194,7 +233,20 @@ size_t qa_flags() {
 		case V502:
 		case V510:
 		case V550:
-			return 0x07286710;
+			return 0x7286710;
+		
+		case V600:
+		case V602:
+		case V650:
+			return 0x71F6910;
+		
+		case V700:
+		case V701:
+		case V720:
+		case V740:
+		case V760:
+		case V761:
+			return 0x1718088;
 		default:
 			return -1;
 	}
@@ -239,7 +291,20 @@ size_t utoken_flags() {
 		case V502:
 		case V510:
 		case V550:
-			return 0x07286778;
+			return 0x7286778;
+		
+		case V600:
+		case V602:
+		case V650:
+			return 0x71F6978;
+		
+		case V700:
+		case V701:
+		case V720:
+		case V740:
+		case V760:
+		case V761:
+			return 0x17180F0;
 		default:
 			return -1;
 	}
@@ -284,7 +349,20 @@ size_t root_vnode() {
 		case V502:
 		case V510:
 		case V550:
-			return 0x07493510;
+			return 0x7493510;
+		
+		case V600:
+		case V602:
+		case V650:
+			return 0x73FF510;
+		
+		case V700:
+		case V701:
+		case V720:
+		case V740:
+		case V760:
+		case V761:
+			return 0x3D17510;
 		default:
 			return -1;
 	}
